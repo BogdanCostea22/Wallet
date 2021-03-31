@@ -22,6 +22,7 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentMainBinding.inflate(inflater)
+
         return binding.root
     }
 }
