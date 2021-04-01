@@ -1,11 +1,7 @@
 package ro.test.walleet.wallet
 
-import com.google.protobuf.ByteString
 import ro.test.walleet.wallet.model.TransactionData
-import wallet.core.java.AnySigner
 import wallet.core.jni.CoinType
-import wallet.core.jni.proto.Ethereum
-import java.math.BigInteger
 
 object SigningTransactionMediator {
 

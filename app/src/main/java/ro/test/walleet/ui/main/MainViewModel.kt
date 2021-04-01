@@ -16,6 +16,8 @@ class MainViewModel : ViewModel() {
     val seedPhrase: LiveData<List<String>>
         get() = _seedPhrase
 
+    //Todo implement wallet initialization step
+
     init {
         val phrase = walletUseCase.generateSeedPhrase()
         Log.i("SEED_PHRASE_DBG", phrase.split(" ").size.toString())

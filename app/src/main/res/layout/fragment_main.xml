@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:padding="8dp"
-            android:background="@android:color/darker_gray"
+            android:background="@drawable/chip_group_shape"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/seed_phrase_tv" />
