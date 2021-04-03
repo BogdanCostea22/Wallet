@@ -49,6 +49,7 @@
             app:backgroundTint="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:onClickNavigate="@{@id/action_mainFragment_to_scannerFragment}"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

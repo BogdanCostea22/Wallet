@@ -9,5 +9,14 @@
         android:id="@+id/mainFragment"
         android:name="ro.test.walleet.ui.main.MainFragment"
         android:label="main_fragment"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_scannerFragment"
+            app:destination="@id/scannerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scannerFragment"
+        android:name="ro.test.walleet.ui.scanner.ScannerFragment"
+        android:label="ScannerFragment"
+        tools:layout="@layout/fragment_scanner"/>
 </navigation>
