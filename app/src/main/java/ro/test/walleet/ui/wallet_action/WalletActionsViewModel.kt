@@ -3,6 +3,7 @@ package ro.test.walleet.ui.wallet_action
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.*
+import ro.test.walleet.dapp_connection.use_case.WCUseCaseImpl
 import ro.test.walleet.paytomate.PaytomatUseCase
 import ro.test.walleet.paytomate.model.ApprovalSessionDetails
 import ro.test.walleet.paytomate.model.WCCallbackState
@@ -77,12 +78,3 @@ class WalletActionsViewModel(
         Log.i("DBG_WALLET_ACTIONS", "On Cleared")
     }
 }
-
-//fun printChainId() {
-//        val privateStringField: Field = WCSession::class.java.getDeclaredField("chainId")
-//
-//        privateStringField.isAccessible = true
-//
-//        val fieldValue = privateStringField.get(useCase.session) as Long?
-//        Log.i("DBG","fieldValue = $fieldValue")
-//}

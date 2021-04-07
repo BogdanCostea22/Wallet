@@ -72,16 +72,13 @@ class WalletKeyProviderImpl(private val walletConfiguration: WalletConfiguration
 
         }.build()
 
-        Log.i("DBG Signed signature", "${signerInput.toString()}")
 
         val signerOutput =
             AnySigner.sign(signerInput, walletConfiguration.coinType, Elrond.SigningOutput.parser())
-
-        Log.i("DBG Signed transaction", ": \n${signerOutput.encoded.toByteArray().toHexString()}")
-        Log.i("DBG Signed signature", "${signerOutput.signature}")
+        Log.i("DBG Signed signature", "$signerOutput")
 
 
-        return signerOutput.encoded
+        return signerOutput.signature
     }
 
 }

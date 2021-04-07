@@ -56,6 +56,8 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
 
     implementation "com.trustwallet:wallet-core:$trust_wallet_core"
+    implementation 'com.github.WalletConnect:kotlin-walletconnect-lib:0.9.6'
+
 
 //    implementation "com.github.WalletConnect:kotlin-walletconnect-lib:$wallet_connect_version"
     implementation 'com.google.mlkit:barcode-scanning:16.1.1'
