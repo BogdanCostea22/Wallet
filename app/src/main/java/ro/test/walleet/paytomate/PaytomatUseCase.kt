@@ -1,6 +1,8 @@
 package ro.test.walleet.paytomate
 
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.encodeToString
 import ro.test.walleet.common.runOnBackgroundThread
 import ro.test.walleet.paytomate.model.WCCallbackState
 import ro.test.walleet.paytomate.sdk.WCInteractor
@@ -55,11 +57,10 @@ class PaytomatUseCase(
 
     override fun signTransaction(order: WCElrondOrder) {
         runOnBackgroundThread {
-            val transaction = order.params
-            //Todo sign transaction
-            val signedtransaction = applicationWalletProvider.signElrondTransaction(order)
-
-            interactorWC.approveRequest(order.id, signedtransaction)
+            val signedTransaction = applicationWalletProvider.signElrondTransaction(order)
+//            val signature = signedtransaction.split(":").last().replace("\"", "")
+//            val jsonRpcSignature = SignedTransaction(signature)
+            interactorWC.approveRequest(order.id, signedTransaction)
         }
     }
 }
