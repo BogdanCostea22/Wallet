@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="kotlin.jvm.functions.Function0"/>
+        <import type="kotlin.Unit"/>
+
+        <variable
+            name="approveSession"
+            type="Function0&lt;Unit>"/>
+
+        <variable
+            name="rejectSession"
+            type="Function0&lt;Unit>"/>
+
+        <variable
+            name="sessionInformation"
+            type="ro.test.walleet.paytomate.model.ApprovalSessionDetails" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp">
+
+        <ImageView
+            android:id="@+id/chain_logo_iw"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="20dp"
+            app:onLoadFromUrl="@{sessionInformation.iconUrl}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_molecular"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/description_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="@{sessionInformation.description}"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chain_logo_iw" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/provider_url_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="@{sessionInformation.chainUrl}"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/description_tv" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/approve_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{_ -> approveSession.invoke()}"
+            android:text="@string/approve"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
+            app:backgroundTint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/provider_url_tv" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/reject_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reject"
+            android:onClick="@{ _ -> rejectSession.invoke()}"
+            android:layout_marginEnd="20dp"
+            app:backgroundTint="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/approve_bt"
+            app:layout_constraintTop_toTopOf="@id/approve_bt" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

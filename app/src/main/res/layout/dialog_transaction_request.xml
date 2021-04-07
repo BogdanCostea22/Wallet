@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="kotlin.jvm.functions.Function0"/>
+        <import type="kotlin.Unit"/>
+
+        <variable
+            name="order"
+            type="ro.test.walleet.paytomate.sdk.model.WCElrondOrder" />
+        <variable
+            name="approveSession"
+            type="Function0&lt;Unit>"/>
+
+        <variable
+            name="rejectSession"
+            type="Function0&lt;Unit>"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp">
+
+        <ImageView
+            android:id="@+id/chain_logo_iw"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_lending"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_lending"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/from_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:textAlignment="textStart"
+            android:textSize="16sp"
+            app:onSetDescription="@{@string/from}"
+            app:onSetValue="@{order.params.from}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chain_logo_iw"
+            tools:text="@string/from" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/to_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:textAlignment="textStart"
+            android:textSize="16sp"
+            app:onSetDescription="@{@string/to}"
+            app:onSetValue="@{order.params.to}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/from_tv"
+            tools:text="@string/to"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/amount_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:textAlignment="textStart"
+            android:textSize="16sp"
+            app:onSetDescription="@{@string/amount}"
+            app:onSetValue="@{order.params.amount}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/to_tv"
+            tools:text="@string/amount"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/approve_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{_ -> approveSession.invoke()}"
+            android:text="@string/approve"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
+            app:backgroundTint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/amount_tv" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/reject_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reject"
+            android:onClick="@{ _ -> rejectSession.invoke()}"
+            android:layout_marginEnd="20dp"
+            app:backgroundTint="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/approve_bt"
+            app:layout_constraintTop_toTopOf="@id/approve_bt" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,8 +1,6 @@
 package ro.test.walleet.ui.scanner
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
@@ -19,9 +17,8 @@ import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
-import ro.test.walleet.common.observe
+import ro.test.walleet.common.extensions.observe
 import ro.test.walleet.databinding.FragmentScannerBinding
-import java.lang.Exception
 import java.lang.Math.*
 import java.util.concurrent.Executors
 
@@ -41,7 +38,7 @@ class ScannerFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentScannerBinding.inflate(inflater)
         setupCamera()
         return binding.root
@@ -96,11 +93,6 @@ class ScannerFragment : Fragment() {
     }
 
     private fun bindAnalyseUseCase(cameraProvider: ProcessCameraProvider, cameraSelector: CameraSelector) {
-        // Note that if you know which format of barcode your app is dealing with, detection will be
-        // faster to specify the supported barcode formats one by one, e.g.
-        // BarcodeScannerOptions.Builder()
-        //     .setBarcodeFormats(Barcode.FORMAT_QR_CODE)
-        //     .build();
 
         val options = BarcodeScannerOptions.Builder()
             .setBarcodeFormats(
@@ -153,13 +145,7 @@ class ScannerFragment : Fragment() {
             .addOnSuccessListener { barcodes ->
                 try {
                 barcodes.forEach { barcode ->
-                    findNavController().previousBackStackEntry?.savedStateHandle?.let{
-                        it.set(
-                            CODE_BAR,
-                            barcode.rawValue
-                        )
-                   findNavController().navigateUp()
-                }
+                    findNavController().navigate(ScannerFragmentDirections.actionScannerFragmentToWalletActionsFragment(barcode.rawValue!!))
                 }
                 }catch (exc: Exception) {
 

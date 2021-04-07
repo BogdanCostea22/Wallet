@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="ro.test.walleet.ui.wallet_action.WalletActionsViewModel" />
+
+        <import type="android.view.View"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/informational_banner_tv"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@{viewModel.connectionStatus}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Connect to: ...." />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Connect to wallet"
+            app:backgroundTint="@color/black"
+            android:layout_marginTop="20dp"
+            android:enabled="@{viewModel.isConnectButtonEnabled()}"
+            android:visibility="@{viewModel.isConnectButtonEnabled() ? View.VISIBLE : View.GONE}"
+            android:onClick="@{() -> viewModel.connect()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/informational_banner_tv" />
+
+        <include
+            layout="@layout/progress_overlay"
+            android:visibility="@{viewModel.onShowConnectingProgressOverlay ? View.VISIBLE : View.GONE}"
+            app:title="@{@string/connecting}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:visibility="invisible"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

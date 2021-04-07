@@ -1,5 +1,12 @@
 <resources>
   <string name="app_name">Crypto Wallet</string>
-    <string name="seed_phrase">Seed Phrase:</string>
-  <string name="connect_to_web_wallet">Connect to web wallet</string>
+    <string name="seed_phrase">Your wallet recovery phrase is:</string>
+  <string name="scan_qr_code">Scan QR code</string>
+    <string name="molecular">Molecular</string>
+    <string name="approve">Approve</string>
+  <string name="reject">Reject</string>
+    <string name="connecting">Connecting...</string>
+    <string name="from">From</string>
+  <string name="to">To</string>
+  <string name="amount">Amount</string>
 </resources>

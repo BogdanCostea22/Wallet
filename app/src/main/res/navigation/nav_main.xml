@@ -18,5 +18,20 @@
         android:id="@+id/scannerFragment"
         android:name="ro.test.walleet.ui.scanner.ScannerFragment"
         android:label="ScannerFragment"
-        tools:layout="@layout/fragment_scanner"/>
+        tools:layout="@layout/fragment_scanner">
+        <action
+            android:id="@+id/action_scannerFragment_to_walletActionsFragment"
+            app:destination="@id/walletActionsFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/mainFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/walletActionsFragment"
+        android:name="ro.test.walleet.ui.wallet_action.WalletActionsFragment"
+        android:label="WalletActionsFragment"
+        tools:layout="@layout/fragment_wallet_activities">
+        <argument
+            android:name="walletConnectUri"
+            app:argType="string" />
+    </fragment>
 </navigation>
